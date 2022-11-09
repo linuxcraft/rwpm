@@ -64,7 +64,7 @@ clean_storage
 
 case $chosen in
 "download new")
-    img=$(./swd -l "$temp_wallpapers_dir" -s views -a "$atleast")
+    img=$(swd -l "$temp_wallpapers_dir" -s views -a "$atleast")
     ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
     ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
     ;;
@@ -87,32 +87,32 @@ case $chosen in
 
     case $chosen in
     "absolute random")
-        img=$(./swd -l "$temp_wallpapers_dir" -a "$atleast" -p 000)
+        img=$(swd -l "$temp_wallpapers_dir" -a "$atleast" -p 000)
         ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
         ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
         ;;
     "random from most viewed")
-        img=$(./swd -l "$temp_wallpapers_dir" -s views -a "$atleast")
+        img=$(swd -l "$temp_wallpapers_dir" -s views -a "$atleast")
         ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
         ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
         ;;
     "random from latest")
-        img=$(./swd -l "$temp_wallpapers_dir" -s latest -a "$atleast")
+        img=$(swd -l "$temp_wallpapers_dir" -s latest -a "$atleast")
         ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
         ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
         ;;
     "random from toplist")
-        img=$(./swd -l "$temp_wallpapers_dir" -s toplist -a "$atleast")
+        img=$(swd -l "$temp_wallpapers_dir" -s toplist -a "$atleast")
         ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
         ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
         ;;
     "random from favorites")
-        img=$(./swd -l "$temp_wallpapers_dir" -s favorites -a "$atleast")
+        img=$(swd -l "$temp_wallpapers_dir" -s favorites -a "$atleast")
         ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
         ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
         ;;
     "random and blurred")
-        img=$(./swd -l "$temp_wallpapers_dir")
+        img=$(swd -l "$temp_wallpapers_dir")
         convert -blur 0x80 "$img" "$img"
         ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
         ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
