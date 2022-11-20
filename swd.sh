@@ -127,7 +127,7 @@ wallpaper_url="https://$site/search?"
 
 [[ -n "$atleast" ]] && wallpaper_url+="&atleast=$atleast"
 
-wallpaper_url+="&page=$(("$RANDOM" % 30 + 1))"
+[[ -z "$query" ]] && wallpaper_url+="&page=$(("$RANDOM" % 30 + 1))"
 
 case "$sorting" in
 "latest") wallpaper_url+="&sorting=date_added" ;;
