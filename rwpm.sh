@@ -161,4 +161,12 @@ case $chosen in
         notify-send "$img saved"
     fi
     ;;
+"")
+    ;;
+*)
+    # here bag: chosen is able to contain 2+ words
+    img=$(swd -l "$temp_wallpapers_dir" -q "$chosen" -s toplist -a "$atleast")
+    ln -sf $(readlink -f "$wallpaper") "$wallpaper_previous"
+    ln -sf "$img" "$wallpaper" && feh --bg-fill "$wallpaper" >/dev/null
+    ;;
 esac

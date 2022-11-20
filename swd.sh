@@ -58,8 +58,14 @@ while [[ $# -gt 0 ]]; do
     key="$1"
 
     case $key in
+
     -C | --colors)
         colors="$2"
+        shift
+        shift
+        ;;
+    -q | --query)
+        query="$2"
         shift
         shift
         ;;
@@ -107,7 +113,9 @@ done
 # Address for the wallpaper website
 wallpaper_url="https://$site/search?"
 
-[[ -n "$categories" ]] && wallpaper_url+="categories=$categories"
+[[ -n "$query" ]] &&  wallpaper_url+="q=${query// /+}"
+
+[[ -n "$categories" ]] && wallpaper_url+="&categories=$categories"
 
 [[ -n "$purity" ]] && wallpaper_url+="&purity=$purity"
 
