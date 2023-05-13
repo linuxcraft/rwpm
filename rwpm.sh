@@ -58,7 +58,7 @@ wallpaper_previous="$wallpapers_dir/wallpaper_previous"
 
 
 clean_storage () {
-  find "$temp_wallpapers_dir" -mtime +1 -print ! name "$wallpaper" | xargs rm -rf
+  find "$temp_wallpapers_dir" -mtime +1 ! -samefile "$(readlink -f "$wallpaper")" ! -samefile "$(readlink -f "$wallpaper_previous")" -exec rm {} +
 }
 clean_storage
 
