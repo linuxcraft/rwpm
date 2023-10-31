@@ -147,7 +147,7 @@ rand_img_url=${img_urls[$RANDOM % ${#img_urls[@]}]}
 rand_img=$(curl -s "$rand_img_url" | grep -oE 'https://w.'$site'/full/[[:alnum:]]{2}/wallhaven-[[:alnum:]]{6}\.(jpg|png)')
 
 if [ -z "$rand_img" ]; then
-    notify-send -u critical "Failed to load wallpaper"
+    notify-send -a "swd" -u critical "Failed to load wallpaper" -r 9997
     exit 1
 fi
 
@@ -161,7 +161,7 @@ show_progress() {
 
     while [ "$local_file_size" != "$dest_file_size" ]; do
         percent=$(("$local_file_size"*100/"$dest_file_size"))
-        notify-send -t 200 --hint=string:x-dunst-stack-tag:swd -h int:value:$percent "$percent% Downloading..."
+        notify-send -a "swd" --hint=string:x-dunst-stack-tag:swd -h int:value:$percent "$percent% Downloading..." -t 200 -r 9997
         local_file_size=$(stat -c%s "$1")
         sleep 0.1
     done
